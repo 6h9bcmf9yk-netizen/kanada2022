@@ -480,6 +480,51 @@
       margin-bottom: 0;
     }
 
+
+    /* Schnelle Etappen-Navigation */
+
+    .stage-nav {
+      display: flex;
+      gap: 0.55rem;
+      margin: 0.8rem 0 1rem;
+      padding: 0.35rem 0 0.65rem;
+      overflow-x: auto;
+      scrollbar-width: thin;
+    }
+
+    .stage-nav a {
+      flex: 0 0 auto;
+      padding: 0.55rem 0.8rem;
+      border: 1px solid rgba(23, 63, 53, 0.2);
+      border-radius: 999px;
+      color: var(--wald);
+      background: var(--weiss);
+      font-size: 0.86rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .stage-nav a:hover,
+    .stage-nav a:focus-visible {
+      color: var(--weiss);
+      background: var(--wald);
+    }
+
+    .photo-tip {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin: 0 0 1.4rem;
+      padding: 0.8rem 1rem;
+      border-radius: 12px;
+      color: var(--wald);
+      background: #e8f1ed;
+      font-weight: 750;
+    }
+
+    .stop {
+      scroll-margin-top: 5.5rem;
+    }
     /* Bilder */
 
     .stop-gallery {
@@ -517,6 +562,43 @@
       object-fit: contain;
     }
 
+
+    .zoom-frame {
+      position: relative;
+      display: block;
+      min-width: 0;
+      overflow: hidden;
+      border-radius: 14px;
+      cursor: zoom-in;
+    }
+
+    .zoom-frame.panorama {
+      grid-column: 1 / -1;
+    }
+
+    .zoom-frame img {
+      display: block;
+    }
+
+    .zoom-badge {
+      position: absolute;
+      right: 0.65rem;
+      bottom: 0.65rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.45rem 0.65rem;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      border-radius: 999px;
+      color: #fff;
+      background: rgba(10, 25, 21, 0.78);
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+      font-size: 0.76rem;
+      font-weight: 800;
+      line-height: 1;
+      pointer-events: none;
+      backdrop-filter: blur(6px);
+    }
     /* Whistler */
 
     .region-heading {
@@ -676,6 +758,15 @@
       height: 250px;
       object-fit: cover;
       cursor: zoom-in;
+    }
+
+    .card > .zoom-frame {
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+
+    .card > .zoom-frame img {
+      height: 250px;
+      object-fit: cover;
     }
 
     .card-content {
@@ -872,7 +963,7 @@
   <header class="hero">
     <img
       class="hero-image local-image"
-      src="image-01.avif"
+      src="image-01.avif" decoding="async"
       alt="Berglandschaft auf dem Trophy Meadows Trail"
     >
 
@@ -910,8 +1001,21 @@
     <section class="section" id="reise">
       <h2>Reiseverlauf</h2>
 
+      <nav class="stage-nav" aria-label="Direkt zu einer Reiseetappe">
+        <a href="#canmore">Canmore</a>
+        <a href="#banff">Banff</a>
+        <a href="#ink-pots">Ink Pots</a>
+        <a href="#lake-louise">Lake Louise</a>
+        <a href="#jasper">Jasper</a>
+        <a href="#clearwater">Clearwater</a>
+        <a href="#trophy-meadows">Trophy Meadows</a>
+        <a href="#whistler">Whistler</a>
+      </nav>
+
+      <p class="photo-tip"><span aria-hidden="true">🔍</span> Tipp: Fotos antippen oder anklicken, um sie groß anzuzeigen.</p>
+
       <div class="timeline">
-        <article class="stop">
+        <article class="stop" id="calgary">
           <div class="stop-head">
             <h3>Calgary</h3>
             <span class="date">Ankunft</span>
@@ -935,7 +1039,7 @@
           </div>
         </article>
 
-        <article class="stop">
+        <article class="stop" id="canmore">
           <div class="stop-head">
             <h3>Canmore &amp; Bow River</h3>
             <span class="date">10. Oktober 2022</span>
@@ -955,34 +1059,34 @@
           </ul>
 
           <div class="links">
-            <a class="button folder-button gpx-download" href="Canmore_2022-10-10_19-59-34.GPX" download="Canmore_2022-10-10_19-59-34.GPX" aria-label="Canmore_2022-10-10_19-59-34.GPX herunterladen">Canmore_2022-10-10_19-59-34.GPX herunterladen</a>
+            <a class="button folder-button gpx-download" href="Canmore_2022-10-10_19-59-34.GPX" download="Canmore_2022-10-10_19-59-34.GPX" aria-label="GPX-Route herunterladen">GPX-Route herunterladen</a>
           </div>
 
           <div class="stop-gallery three">
             <img
               class="local-image zoomable"
-              src="image-02.avif"
+              src="image-02.avif" decoding="async"
               alt="Bow River und Berglandschaft bei Canmore"
               loading="lazy"
             >
 
             <img
               class="local-image zoomable"
-              src="image-03.avif"
+              src="image-03.avif" decoding="async"
               alt="Canmore und der Bow River"
               loading="lazy"
             >
 
             <img
               class="local-image zoomable route-image"
-              src="image-04.avif"
+              src="image-04.avif" decoding="async"
               alt="Streckenkarte der Wanderung in Canmore"
               loading="lazy"
             >
           </div>
         </article>
 
-        <article class="stop">
+        <article class="stop" id="banff">
           <div class="stop-head">
             <h3>Banff &amp; Sulphur Mountain</h3>
             <span class="date">11. Oktober 2022</span>
@@ -1010,28 +1114,28 @@
           <div class="stop-gallery three">
             <img
               class="local-image zoomable"
-              src="image-05.avif"
+              src="image-05.avif" decoding="async"
               alt="Straße in Banff vor einer Bergkulisse"
               loading="lazy"
             >
 
             <img
               class="local-image zoomable"
-              src="image-06.avif"
+              src="image-06.avif" decoding="async"
               alt="Wanderung auf den Sulphur Mountain"
               loading="lazy"
             >
 
             <img
               class="local-image zoomable"
-              src="image-07.avif"
+              src="image-07.avif" decoding="async"
               alt="Aussicht vom Sulphur Mountain"
               loading="lazy"
             >
           </div>
         </article>
 
-        <article class="stop">
+        <article class="stop" id="johnston-canyon">
           <div class="stop-head">
             <h3>Johnston Canyon</h3>
             <span class="date">12. Oktober 2022</span>
@@ -1044,7 +1148,7 @@
           </p>
         </article>
 
-        <article class="stop">
+        <article class="stop" id="ink-pots">
           <div class="stop-head">
             <h3>Wanderung zu den Ink Pots</h3>
             <span class="date">12. Oktober 2022</span>
@@ -1081,7 +1185,7 @@
           </div>
 
           <aside class="information">
-            <h4>Protecting this Site</h4>
+            <h4>Schutz der Ink Pots</h4>
 
             <p>
               The Inkpots have seen a lot of abuse. In 1996, Parks Canada
@@ -1114,35 +1218,35 @@
           <div class="stop-gallery four">
             <img
               class="local-image zoomable"
-              src="image-08.avif"
+              src="image-08.avif" decoding="async"
               alt="Landschaft auf der Wanderung zu den Ink Pots"
               loading="lazy"
             >
 
             <img
               class="local-image zoomable"
-              src="image-09.avif"
+              src="image-09.avif" decoding="async"
               alt="Blaugrünes Wasser bei den Ink Pots"
               loading="lazy"
             >
 
             <img
               class="local-image zoomable"
-              src="image-10.avif"
+              src="image-10.avif" decoding="async"
               alt="Berglandschaft bei den Ink Pots"
               loading="lazy"
             >
 
             <img
               class="local-image zoomable"
-              src="image-11.avif"
+              src="image-11.avif" decoding="async"
               alt="Ink Pots mit Bergen im Hintergrund"
               loading="lazy"
             >
           </div>
         </article>
 
-        <article class="stop">
+        <article class="stop" id="cochrane">
           <div class="stop-head">
             <h3>Cochrane</h3>
             <span class="date">Yamnuska Wolfdog Sanctuary</span>
@@ -1174,21 +1278,21 @@
           <div class="stop-gallery">
             <img
               class="local-image zoomable"
-              src="image-12.avif"
+              src="image-12.avif" decoding="async"
               alt="Wolfshund im Yamnuska Wolfdog Sanctuary"
               loading="lazy"
             >
 
             <img
               class="local-image zoomable"
-              src="image-13.avif"
+              src="image-13.avif" decoding="async"
               alt="Anlage des Yamnuska Wolfdog Sanctuary"
               loading="lazy"
             >
           </div>
         </article>
 
-        <article class="stop">
+        <article class="stop" id="lake-louise">
           <div class="stop-head">
             <h3>Lake Louise</h3>
             <span class="date">14. Oktober 2022</span>
@@ -1209,21 +1313,21 @@
           <div class="stop-gallery">
             <img
               class="local-image zoomable"
-              src="image-14.avif"
+              src="image-14.avif" decoding="async"
               alt="Berglandschaft bei Lake Louise"
               loading="lazy"
             >
 
             <img
               class="local-image zoomable"
-              src="image-15.avif"
+              src="image-15.avif" decoding="async"
               alt="Wanderung rund um Lake Louise"
               loading="lazy"
             >
           </div>
         </article>
 
-        <article class="stop">
+        <article class="stop" id="jasper">
           <div class="stop-head">
             <h3>Jasper</h3>
             <span class="date">Dark Sky Festival</span>
@@ -1245,35 +1349,35 @@
           <div class="stop-gallery four">
             <img
               class="local-image zoomable"
-              src="image-16.avif"
+              src="image-16.avif" decoding="async"
               alt="Eindrücke aus Jasper"
               loading="lazy"
             >
 
             <img
               class="local-image zoomable"
-              src="image-17.avif"
+              src="image-17.avif" decoding="async"
               alt="Landschaft bei Jasper"
               loading="lazy"
             >
 
             <img
               class="local-image zoomable"
-              src="image-18.avif"
+              src="image-18.avif" decoding="async"
               alt="Eindrücke aus Jasper und der Umgebung"
               loading="lazy"
             >
 
             <img
               class="local-image zoomable"
-              src="image-19.avif"
+              src="image-19.avif" decoding="async"
               alt="Wapiti bei Jasper"
               loading="lazy"
             >
           </div>
         </article>
 
-        <article class="stop">
+        <article class="stop" id="edith-lake">
           <div class="stop-head">
             <h3>Edith Lake &amp; Maligne Canyon</h3>
             <span class="date">16. Oktober 2022</span>
@@ -1292,41 +1396,41 @@
           </ul>
 
           <div class="links">
-            <a class="button folder-button gpx-download" href="Jasper_2022-10-16_10-58-43.GPX" download="Jasper_2022-10-16_10-58-43.GPX" aria-label="Jasper_2022-10-16_10-58-43.GPX herunterladen">Jasper_2022-10-16_10-58-43.GPX herunterladen</a>
+            <a class="button folder-button gpx-download" href="Jasper_2022-10-16_10-58-43.GPX" download="Jasper_2022-10-16_10-58-43.GPX" aria-label="GPX-Route herunterladen">GPX-Route herunterladen</a>
           </div>
 
           <div class="stop-gallery four">
             <img
               class="local-image zoomable"
-              src="image-20.avif"
+              src="image-20.avif" decoding="async"
               alt="Landschaft bei Jasper"
               loading="lazy"
             >
 
             <img
               class="local-image zoomable"
-              src="image-21.avif"
+              src="image-21.avif" decoding="async"
               alt="Wanderlandschaft bei Jasper"
               loading="lazy"
             >
 
             <img
               class="local-image zoomable"
-              src="image-22.avif"
+              src="image-22.avif" decoding="async"
               alt="Fluss und Berglandschaft bei Jasper"
               loading="lazy"
             >
 
             <img
               class="local-image zoomable route-image"
-              src="image-23.avif"
+              src="image-23.avif" decoding="async"
               alt="Streckenkarte der Wanderung bei Jasper"
               loading="lazy"
             >
           </div>
         </article>
 
-        <article class="stop">
+        <article class="stop" id="clearwater">
           <div class="stop-head">
             <h3>Clearwater &amp; Dutch Lake</h3>
             <span class="date">18. Oktober 2022</span>
@@ -1347,21 +1451,21 @@
           <div class="stop-gallery three">
             <img
               class="local-image zoomable"
-              src="image-24.avif"
+              src="image-24.avif" decoding="async"
               alt="Landschaft am Dutch Lake bei Clearwater"
               loading="lazy"
             >
 
             <img
               class="local-image zoomable"
-              src="image-25.avif"
+              src="image-25.avif" decoding="async"
               alt="Dutch Lake bei Clearwater"
               loading="lazy"
             >
 
             <img
               class="local-image zoomable"
-              src="image-26.avif"
+              src="image-26.avif" decoding="async"
               alt="Landschaft bei Clearwater"
               loading="lazy"
             >
@@ -1405,7 +1509,7 @@
           </div>
 
           <div class="links">
-            <a class="button folder-button gpx-download" href="Trophy Meadows Trail 2022-10-19_12-17-38.GPX" download="Trophy Meadows Trail 2022-10-19_12-17-38.GPX" aria-label="Trophy Meadows Trail 2022-10-19_12-17-38.GPX herunterladen">Trophy Meadows Trail 2022-10-19_12-17-38.GPX herunterladen</a>
+            <a class="button folder-button gpx-download" href="Trophy Meadows Trail 2022-10-19_12-17-38.GPX" download="Trophy Meadows Trail 2022-10-19_12-17-38.GPX" aria-label="GPX-Route herunterladen">GPX-Route herunterladen</a>
 
             <a
               class="button external-link"
@@ -1420,28 +1524,28 @@
           <div class="stop-gallery three">
             <img
               class="local-image zoomable"
-              src="image-27.avif"
+              src="image-27.avif" decoding="async"
               alt="Trophy Meadows Trail"
               loading="lazy"
             >
 
             <img
               class="local-image zoomable"
-              src="image-28.avif"
+              src="image-28.avif" decoding="async"
               alt="Aussicht am Trophy Meadows Trail"
               loading="lazy"
             >
 
             <img
               class="local-image zoomable route-image"
-              src="image-29.avif"
+              src="image-29.avif" decoding="async"
               alt="Streckenkarte des Trophy Meadows Trail"
               loading="lazy"
             >
           </div>
         </article>
 
-        <article class="stop">
+        <article class="stop" id="kamloops">
           <div class="stop-head">
             <h3>Kamloops &amp; Salmon Arm</h3>
             <span class="date">British Columbia</span>
@@ -1456,21 +1560,21 @@
           <div class="stop-gallery three">
             <img
               class="local-image zoomable"
-              src="image-30.avif"
+              src="image-30.avif" decoding="async"
               alt="Landschaft bei Kamloops und Salmon Arm"
               loading="lazy"
             >
 
             <img
               class="local-image zoomable"
-              src="image-31.avif"
+              src="image-31.avif" decoding="async"
               alt="Fahrt zwischen Kamloops und Whistler"
               loading="lazy"
             >
 
             <img
               class="local-image zoomable"
-              src="image-32.avif"
+              src="image-32.avif" decoding="async"
               alt="Eindrücke aus Salmon Arm"
               loading="lazy"
             >
@@ -1487,7 +1591,7 @@
           </p>
         </div>
 
-        <article class="stop">
+        <article class="stop" id="old-bintys">
           <div class="stop-head">
             <h3>Old Bintys</h3>
             <span class="date">22. Oktober 2022 · Whistler</span>
@@ -1503,28 +1607,28 @@
           <div class="stop-gallery three">
             <img
               class="local-image zoomable"
-              src="image-33.avif"
+              src="image-33.avif" decoding="async"
               alt="Wanderung bei Old Bintys"
               loading="lazy"
             >
 
             <img
               class="local-image zoomable"
-              src="image-34.avif"
+              src="image-34.avif" decoding="async"
               alt="Landschaft bei Old Bintys"
               loading="lazy"
             >
 
             <img
               class="local-image zoomable"
-              src="image-35.avif"
+              src="image-35.avif" decoding="async"
               alt="Unterwegs bei Old Bintys nahe Whistler"
               loading="lazy"
             >
           </div>
         </article>
 
-        <article class="stop">
+        <article class="stop" id="singing-pass">
           <div class="stop-head">
             <h3>Singing Pass Trail</h3>
             <span class="date">24. Oktober 2022 · Whistler</span>
@@ -1546,21 +1650,21 @@
           <div class="stop-gallery">
             <img
               class="local-image zoomable"
-              src="image-36.avif"
+              src="image-36.avif" decoding="async"
               alt="Winterliche Landschaft auf dem Singing Pass Trail"
               loading="lazy"
             >
 
             <img
               class="local-image zoomable"
-              src="image-37.avif"
+              src="image-37.avif" decoding="async"
               alt="Schnee auf dem Singing Pass Trail bei Whistler"
               loading="lazy"
             >
           </div>
         </article>
 
-        <article class="stop">
+        <article class="stop" id="whistler">
           <div class="stop-head">
             <h3>Blackcomb</h3>
             <span class="date">Whistler</span>
@@ -1583,7 +1687,7 @@
           <div class="stop-gallery">
             <img
               class="local-image zoomable panorama"
-              src="image-38.avif"
+              src="image-38.avif" decoding="async"
               alt="Landschaft bei Blackcomb"
               loading="lazy"
             >
@@ -1626,7 +1730,7 @@
             <div class="camp-gallery">
               <img
                 class="local-image zoomable"
-                src="image-39.avif"
+                src="image-39.avif" decoding="async"
                 alt="Tunnel Mountain Village II Campground in Banff"
                 loading="lazy"
               >
@@ -1714,14 +1818,14 @@
             <div class="camp-gallery">
               <img
                 class="local-image zoomable"
-                src="image-40.avif"
+                src="image-40.avif" decoding="async"
                 alt="Wohnmobil auf dem Alice Lake Campground"
                 loading="lazy"
               >
 
               <img
                 class="local-image zoomable"
-                src="image-41.avif"
+                src="image-41.avif" decoding="async"
                 alt="Stellplatz zwischen hohen Bäumen auf dem Alice Lake Campground"
                 loading="lazy"
               >
@@ -1772,7 +1876,7 @@
         <article class="card">
           <img
             class="local-image zoomable"
-            src="image-42.avif"
+            src="image-42.avif" decoding="async"
             alt="Hinweis zur Kaffeekultur von Tim Hortons"
             loading="lazy"
           >
@@ -1791,7 +1895,7 @@
         <article class="card">
           <img
             class="local-image zoomable"
-            src="image-43.avif"
+            src="image-43.avif" decoding="async"
             alt="Earth's Own Mandelmilch mit Vanille"
             loading="lazy"
           >
@@ -1883,6 +1987,21 @@
     }
 
     zoomableImages.forEach((image) => {
+      if (!image.closest(".zoom-frame")) {
+        const frame = document.createElement("span");
+        frame.className = "zoom-frame";
+        if (image.classList.contains("panorama")) {
+          frame.classList.add("panorama");
+        }
+        image.parentNode.insertBefore(frame, image);
+        frame.appendChild(image);
+
+        const badge = document.createElement("span");
+        badge.className = "zoom-badge";
+        badge.setAttribute("aria-hidden", "true");
+        badge.textContent = "🔍 Vergrößern";
+        frame.appendChild(badge);
+      }
       image.setAttribute("tabindex", "0");
       image.setAttribute("role", "button");
       image.setAttribute(
