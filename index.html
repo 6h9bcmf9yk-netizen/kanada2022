@@ -1,0 +1,1962 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Kanada 2022 – Roadtrip durch die Rockies</title>
+
+  <meta
+    name="description"
+    content="Erfahrungen, Wanderungen und Tipps von unserem Kanada-Roadtrip durch Alberta und British Columbia."
+  >
+
+  <style>
+    :root {
+      --wald: #173f35;
+      --wald-hell: #2b6757;
+      --wald-dunkel: #0d2922;
+      --wasser: #138da3;
+      --wasser-hell: #dff5f6;
+      --sand: #f5f0e6;
+      --weiss: #ffffff;
+      --text: #26332f;
+      --grau: #66746f;
+      --grau-hell: #edf0ee;
+      --rot: #cc4b3e;
+      --gold: #e5b84b;
+      --gold-hell: #fff7d7;
+      --schatten: 0 14px 35px rgba(20, 50, 43, 0.14);
+      --schatten-stark: 0 22px 55px rgba(10, 35, 29, 0.25);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--sand);
+      font-family:
+        Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      line-height: 1.65;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    a {
+      color: var(--wasser);
+      font-weight: 700;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.18em;
+    }
+
+    a:hover {
+      color: var(--rot);
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    [role="button"]:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin-top: 0;
+      line-height: 1.12;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+      font-size: clamp(3.5rem, 10vw, 7.5rem);
+      letter-spacing: -0.055em;
+    }
+
+    h2 {
+      margin-bottom: 0.8rem;
+      color: var(--wald);
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      letter-spacing: -0.035em;
+    }
+
+    h3 {
+      margin-bottom: 0.55rem;
+      color: var(--wald);
+      font-size: 1.4rem;
+    }
+
+    h4 {
+      margin-bottom: 0.75rem;
+      color: var(--wald);
+      font-size: 1.15rem;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 1rem;
+      z-index: 1000;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      color: var(--weiss);
+      background: var(--wald);
+    }
+
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    /* Titelbereich */
+
+    .hero {
+      position: relative;
+      min-height: 82vh;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      color: var(--weiss);
+      background: var(--wald);
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(7, 35, 30, 0.94) 0%,
+          rgba(7, 35, 30, 0.68) 50%,
+          rgba(7, 35, 30, 0.2) 100%
+        );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 9rem 0 5.5rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 1rem;
+      padding: 0.45rem 0.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 999px;
+      color: var(--weiss);
+      background: rgba(0, 0, 0, 0.22);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-actions,
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1.2rem;
+    }
+
+    /* Schaltflächen und Links */
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      min-height: 44px;
+      padding: 0.78rem 1rem;
+      border: 2px solid transparent;
+      border-radius: 999px;
+      color: var(--weiss);
+      background: var(--wald);
+      box-shadow: 0 5px 14px rgba(23, 63, 53, 0.2);
+      font: inherit;
+      font-size: 0.9rem;
+      font-weight: 800;
+      line-height: 1.3;
+      text-align: center;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+      cursor: pointer;
+      transition:
+        transform 160ms ease,
+        background 160ms ease,
+        box-shadow 160ms ease;
+    }
+
+    .button:hover {
+      color: var(--weiss);
+      background: var(--wald-hell);
+      box-shadow: 0 8px 18px rgba(23, 63, 53, 0.28);
+      transform: translateY(-2px);
+    }
+
+    .button.light {
+      color: var(--wald);
+      background: var(--weiss);
+    }
+
+    .button.outline {
+      border-color: rgba(255, 255, 255, 0.7);
+      background: rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(8px);
+    }
+
+    .external-link::after {
+      content: "↗";
+      font-size: 1.05rem;
+      line-height: 1;
+    }
+
+    .folder-button {
+      border-color: var(--wasser);
+      color: var(--wald-dunkel);
+      background: var(--wasser-hell);
+      box-shadow: 0 6px 16px rgba(19, 141, 163, 0.22);
+    }
+
+    .folder-button::before {
+      flex: 0 0 auto;
+      content: "📁";
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    .folder-button:hover {
+      border-color: var(--wald);
+      color: var(--weiss);
+      background: var(--wald-hell);
+    }
+
+    /* Navigation */
+
+    .navigation {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      overflow-x: auto;
+      background: rgba(23, 63, 53, 0.97);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(12px);
+    }
+
+    .navigation-inner {
+      width: max-content;
+      min-width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 0.2rem;
+      padding: 0.55rem 1rem;
+    }
+
+    .navigation a {
+      padding: 0.55rem 0.8rem;
+      border-radius: 999px;
+      color: var(--weiss);
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .navigation a:hover {
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    main {
+      overflow: hidden;
+    }
+
+    .section {
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 5.5rem 0;
+      scroll-margin-top: 4rem;
+    }
+
+    #reise {
+      padding-bottom: 2rem;
+    }
+
+    #camping {
+      padding-top: 2.5rem;
+    }
+
+    .section-intro {
+      max-width: 780px;
+      margin-bottom: 2.3rem;
+      color: var(--grau);
+      font-size: 1.08rem;
+    }
+
+    /* Reiseverlauf */
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .timeline::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 22px;
+      width: 3px;
+      border-radius: 999px;
+      content: "";
+      background: linear-gradient(var(--wasser), var(--wald));
+    }
+
+    .stop {
+      position: relative;
+      margin-left: 3.8rem;
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      background: var(--weiss);
+      box-shadow: var(--schatten);
+    }
+
+    .stop::before {
+      position: absolute;
+      top: 1.5rem;
+      left: -3.32rem;
+      width: 17px;
+      height: 17px;
+      border: 5px solid var(--sand);
+      border-radius: 50%;
+      content: "";
+      background: var(--rot);
+      box-shadow: 0 0 0 2px var(--rot);
+    }
+
+    .stop-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem 1rem;
+    }
+
+    .date {
+      color: var(--grau);
+      font-size: 0.85rem;
+      font-weight: 750;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .facts li {
+      padding: 0.38rem 0.7rem;
+      border-radius: 999px;
+      color: var(--wald);
+      background: var(--wasser-hell);
+      font-size: 0.85rem;
+      font-weight: 720;
+    }
+
+    .highlight {
+      margin-top: 1rem;
+      padding: 1rem 1.1rem;
+      border-left: 5px solid var(--gold);
+      border-radius: 0 12px 12px 0;
+      color: var(--wald-dunkel);
+      background: var(--gold-hell);
+    }
+
+    /* Trophy-Meadows-Highlight */
+
+    .verdict.highlight-label {
+      display: inline-block;
+      margin-bottom: 0.8rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      color: var(--wald-dunkel);
+      background: var(--gold-hell);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .stop.trip-highlight {
+      overflow: hidden;
+      padding: 2rem;
+      color: var(--weiss);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(10, 42, 34, 0.98),
+          rgba(23, 75, 61, 0.94)
+        );
+      box-shadow: var(--schatten-stark);
+    }
+
+    .stop.trip-highlight::before {
+      background: var(--gold);
+      box-shadow:
+        0 0 0 2px var(--gold),
+        0 0 22px rgba(229, 184, 75, 0.9);
+    }
+
+    .stop.trip-highlight h3,
+    .stop.trip-highlight .date {
+      color: var(--weiss);
+    }
+
+    .stop.trip-highlight .facts li {
+      color: var(--wald-dunkel);
+      background: var(--weiss);
+    }
+
+    .stop.trip-highlight .button {
+      color: var(--wald);
+      background: var(--weiss);
+    }
+
+    .stop.trip-highlight .button:hover {
+      color: var(--wald);
+      background: var(--gold-hell);
+    }
+
+    .stop.trip-highlight .folder-button {
+      border-color: var(--gold);
+      color: var(--wald-dunkel);
+      background: var(--gold-hell);
+    }
+
+    /* Ink-Pots-Information */
+
+    .information {
+      margin-top: 1.3rem;
+      padding: 1.35rem;
+      border-left: 5px solid var(--wasser);
+      border-radius: 0 14px 14px 0;
+      background: #effafa;
+    }
+
+    .information p {
+      margin: 0 0 0.9rem;
+    }
+
+    .information p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Bilder */
+
+    .stop-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-top: 1.25rem;
+    }
+
+    .stop-gallery.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .stop-gallery.four {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .stop-gallery img {
+      width: 100%;
+      height: 260px;
+      border-radius: 14px;
+      object-fit: cover;
+      cursor: zoom-in;
+    }
+
+    .stop-gallery .panorama {
+      grid-column: 1 / -1;
+      height: 350px;
+    }
+
+    .stop-gallery img.route-image {
+      height: 260px;
+      padding: 0.45rem;
+      background: #e4ece4;
+      object-fit: contain;
+    }
+
+    /* Whistler */
+
+    .region-heading {
+      position: relative;
+      margin: 2rem 0 0 3.8rem;
+      padding: 1.3rem 1.5rem;
+      border-radius: var(--radius);
+      color: var(--weiss);
+      background: var(--wasser);
+      box-shadow: var(--schatten);
+    }
+
+    .region-heading h3 {
+      margin-bottom: 0.35rem;
+      color: var(--weiss);
+    }
+
+    .region-heading p {
+      margin: 0;
+    }
+
+    /* Campingplätze */
+
+    .camp-route {
+      position: relative;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .camp-route::before {
+      position: absolute;
+      top: 1rem;
+      bottom: 1rem;
+      left: 26px;
+      width: 3px;
+      border-radius: 999px;
+      content: "";
+      background: linear-gradient(var(--wasser), var(--wald));
+    }
+
+    .camp-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 55px minmax(0, 1fr);
+      gap: 1rem;
+      align-items: start;
+      padding: 1.25rem;
+      border-radius: var(--radius);
+      background: var(--weiss);
+      box-shadow: var(--schatten);
+    }
+
+    .camp-number {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      width: 36px;
+      height: 36px;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--weiss);
+      background: var(--wald);
+      font-weight: 800;
+    }
+
+    .camp-content {
+      min-width: 0;
+    }
+
+    .camp-content h3 {
+      margin-bottom: 0.4rem;
+    }
+
+    .camp-content p {
+      margin: 0.35rem 0 0;
+    }
+
+    .camp-place {
+      color: var(--grau);
+      font-size: 0.86rem;
+      font-weight: 750;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .camp-rating {
+      display: inline-block;
+      margin-top: 0.75rem;
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      color: #505c58;
+      background: var(--grau-hell);
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+
+    .camp-card.favorite {
+      border: 3px solid var(--gold);
+      color: var(--weiss);
+      background: var(--wald);
+      box-shadow: var(--schatten-stark);
+    }
+
+    .camp-card.favorite h3,
+    .camp-card.favorite .camp-place {
+      color: var(--weiss);
+    }
+
+    .camp-card.favorite .camp-number {
+      color: var(--wald-dunkel);
+      background: var(--gold);
+    }
+
+    .favorite-badge {
+      display: inline-block;
+      margin-bottom: 0.7rem;
+      padding: 0.38rem 0.75rem;
+      border-radius: 999px;
+      color: var(--wald-dunkel);
+      background: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .camp-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .camp-gallery img {
+      height: 280px;
+      border-radius: 12px;
+      object-fit: cover;
+      cursor: zoom-in;
+    }
+
+    /* Tippkarten */
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--weiss);
+      box-shadow: var(--schatten);
+    }
+
+    .card > img {
+      height: 250px;
+      object-fit: cover;
+      cursor: zoom-in;
+    }
+
+    .card-content {
+      padding: 1.25rem;
+    }
+
+    .card-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-bottom: 0.7rem;
+      padding: 0.28rem 0.6rem;
+      border-radius: 999px;
+      color: var(--weiss);
+      background: var(--wasser);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    /* Fehlende Bilder */
+
+    .image-error {
+      min-height: 180px;
+      padding: 1rem;
+      color: #7b3028;
+      background: #ffe8e3;
+      object-fit: contain !important;
+    }
+
+    /* Lightbox */
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.92);
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox img {
+      width: auto;
+      max-width: 95vw;
+      max-height: 90vh;
+      border-radius: 10px;
+      object-fit: contain;
+    }
+
+    .lightbox button {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 48px;
+      height: 48px;
+      border: 0;
+      border-radius: 50%;
+      color: var(--weiss);
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 1.7rem;
+      cursor: pointer;
+    }
+
+    footer {
+      padding: 3rem 1rem;
+      color: rgba(255, 255, 255, 0.82);
+      text-align: center;
+      background: var(--wald);
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .stop-gallery.three,
+      .stop-gallery.four {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      .hero {
+        min-height: 72vh;
+      }
+
+      .hero-content {
+        padding-bottom: 4rem;
+      }
+
+      .section {
+        padding: 4rem 0;
+      }
+
+      #reise {
+        padding-bottom: 1.5rem;
+      }
+
+      #camping {
+        padding-top: 2rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline::before {
+        left: 11px;
+      }
+
+      .stop {
+        margin-left: 2.2rem;
+        padding: 1.15rem;
+      }
+
+      .stop.trip-highlight {
+        padding: 1.25rem;
+      }
+
+      .stop::before {
+        left: -2.13rem;
+      }
+
+      .region-heading {
+        margin-left: 2.2rem;
+      }
+
+      .stop-gallery,
+      .stop-gallery.three,
+      .stop-gallery.four {
+        grid-template-columns: 1fr;
+      }
+
+      .stop-gallery img,
+      .stop-gallery .panorama,
+      .stop-gallery img.route-image {
+        grid-column: auto;
+        height: 250px;
+      }
+
+      .button {
+        max-width: 100%;
+      }
+
+      .folder-button {
+        width: 100%;
+        border-radius: 14px;
+      }
+
+      .camp-card {
+        grid-template-columns: 42px minmax(0, 1fr);
+        gap: 0.65rem;
+        padding: 1rem;
+      }
+
+      .camp-route::before {
+        left: 27px;
+      }
+
+      .camp-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .camp-gallery img {
+        height: 250px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+  <header class="hero">
+    <img
+      class="hero-image local-image"
+      src="image-01.avif"
+      alt="Berglandschaft auf dem Trophy Meadows Trail"
+    >
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <span class="eyebrow">
+        Alberta &amp; British Columbia · Oktober 2022
+      </span>
+
+      <h1>Kanada 2022</h1>
+
+      <div class="hero-actions">
+        <a class="button light" href="#reise">
+          Reiseverlauf ansehen
+        </a>
+
+        <a class="button outline" href="#trophy-meadows">
+          Unser größtes Highlight
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="navigation" aria-label="Seitennavigation">
+    <div class="navigation-inner">
+      <a href="#reise">Reiseverlauf</a>
+      <a href="#trophy-meadows">Top-Highlight</a>
+      <a href="#camping">Campingplätze</a>
+      <a href="#tipps">Weitere Tipps</a>
+    </div>
+  </nav>
+
+  <main id="inhalt">
+    <section class="section" id="reise">
+      <h2>Reiseverlauf</h2>
+
+      <div class="timeline">
+        <article class="stop">
+          <div class="stop-head">
+            <h3>Calgary</h3>
+            <span class="date">Ankunft</span>
+          </div>
+
+          <p>
+            Die riesige Mall CrossIron Mills war unser erstes Ziel. Wir
+            nutzten den Besuch vor allem, um nach der Ankunft bis zum Abend
+            wach zu bleiben.
+          </p>
+
+          <div class="links">
+            <a
+              class="button external-link"
+              href="https://www.crossironmills.com/visit/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Mall CrossIron Mills
+            </a>
+          </div>
+        </article>
+
+        <article class="stop">
+          <div class="stop-head">
+            <h3>Canmore &amp; Bow River</h3>
+            <span class="date">10. Oktober 2022</span>
+          </div>
+
+          <p>
+            Die erste Wanderung führte durch Canmore und entlang des
+            türkisfarbenen Bow River. Eine schöne erste Tour, um in Kanada
+            anzukommen und einen Eindruck von der Berglandschaft zu bekommen.
+          </p>
+
+          <ul class="facts">
+            <li>9 km</li>
+            <li>Aufstieg 130 m</li>
+            <li>Abstieg 105 m</li>
+            <li>Max. Höhe 1.341 m</li>
+          </ul>
+
+          <div class="links">
+            <a class="button folder-button gpx-download" href="Canmore_2022-10-10_19-59-34.GPX" download="Canmore_2022-10-10_19-59-34.GPX" aria-label="Canmore_2022-10-10_19-59-34.GPX herunterladen">Canmore_2022-10-10_19-59-34.GPX herunterladen</a>
+          </div>
+
+          <div class="stop-gallery three">
+            <img
+              class="local-image zoomable"
+              src="image-02.avif"
+              alt="Bow River und Berglandschaft bei Canmore"
+              loading="lazy"
+            >
+
+            <img
+              class="local-image zoomable"
+              src="image-03.avif"
+              alt="Canmore und der Bow River"
+              loading="lazy"
+            >
+
+            <img
+              class="local-image zoomable route-image"
+              src="image-04.avif"
+              alt="Streckenkarte der Wanderung in Canmore"
+              loading="lazy"
+            >
+          </div>
+        </article>
+
+        <article class="stop">
+          <div class="stop-head">
+            <h3>Banff &amp; Sulphur Mountain</h3>
+            <span class="date">11. Oktober 2022</span>
+          </div>
+
+          <p>
+            Die Wanderung führte auf den Sulphur Mountain bis zur
+            Aussichtsplattform ganz oben. Dorthin fährt allerdings auch eine
+            Gondel. Deshalb waren auf dem Gipfel und an der Plattform sehr
+            viele Menschen.
+          </p>
+
+          <p>
+            Anschließend besuchten wir die Stadt Banff. Banff ist wirklich
+            sehr schön und auf jeden Fall einen Besuch wert.
+          </p>
+
+          <ul class="facts">
+            <li>10,5 km</li>
+            <li>Aufstieg 680 m</li>
+            <li>Abstieg 655 m</li>
+            <li>Max. Höhe 2.275 m</li>
+          </ul>
+
+          <div class="stop-gallery three">
+            <img
+              class="local-image zoomable"
+              src="image-05.avif"
+              alt="Straße in Banff vor einer Bergkulisse"
+              loading="lazy"
+            >
+
+            <img
+              class="local-image zoomable"
+              src="image-06.avif"
+              alt="Wanderung auf den Sulphur Mountain"
+              loading="lazy"
+            >
+
+            <img
+              class="local-image zoomable"
+              src="image-07.avif"
+              alt="Aussicht vom Sulphur Mountain"
+              loading="lazy"
+            >
+          </div>
+        </article>
+
+        <article class="stop">
+          <div class="stop-head">
+            <h3>Johnston Canyon</h3>
+            <span class="date">12. Oktober 2022</span>
+          </div>
+
+          <p>
+            Zuerst besuchten wir den Johnston Canyon. Für uns war der Canyon
+            nicht besonders spektakulär und deutlich touristischer als viele
+            andere Orte auf unserer Reise.
+          </p>
+        </article>
+
+        <article class="stop">
+          <div class="stop-head">
+            <h3>Wanderung zu den Ink Pots</h3>
+            <span class="date">12. Oktober 2022</span>
+          </div>
+
+          <p>
+            Nach dem Besuch des Johnston Canyon machten wir eine separate
+            Wanderung zu den Ink Pots. Dort wurde es wieder deutlich ruhiger
+            und einsamer. Die farbigen Quellen und die umliegende
+            Berglandschaft gefielen uns wesentlich besser.
+          </p>
+
+          <p>
+            Wir haben bei dieser Wanderung keine eigene GPS-Aufzeichnung
+            erstellt. Die Route kann über AllTrails angesehen werden.
+          </p>
+
+          <ul class="facts">
+            <li>15 km</li>
+            <li>Aufstieg 500 m</li>
+            <li>Abstieg 390 m</li>
+            <li>Max. Höhe 1.768 m</li>
+          </ul>
+
+          <div class="links">
+            <a
+              class="button external-link"
+              href="https://www.alltrails.com/de/route/canada/alberta/moose-meadows-ink-pots-johnston-canyon?p=-1&amp;sh=ehmuvx&amp;utm_medium=trail_share&amp;utm_source=alltrails_virality"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Wanderung bei AllTrails
+            </a>
+          </div>
+
+          <aside class="information">
+            <h4>Protecting this Site</h4>
+
+            <p>
+              The Inkpots have seen a lot of abuse. In 1996, Parks Canada
+              set out to restore this fragile area. Please help us protect
+              the site by staying on the trails and bridges provided.
+            </p>
+
+            <p>
+              Spring water percolates up through the sand and river gravel
+              here to form five blue-green pools known as the “Inkpots”.
+              Look for swirling circles in the sandy pool bottoms – these
+              mark the outlets of water and air bubbles as they move upward
+              from the underground springs.
+            </p>
+
+            <p>
+              Why do the “Inkpots” differ in colour? They fill at different
+              speeds. The milky-green pools fill more slowly and thus have
+              a heavier suspension of fine materials than the clear,
+              deep-blue pools.
+            </p>
+
+            <p>
+              The Inkpots are cool springs. The shallow depth of the
+              underground spring keeps the water temperature around 4 °C
+              much of the year.
+            </p>
+          </aside>
+
+          <div class="stop-gallery four">
+            <img
+              class="local-image zoomable"
+              src="image-08.avif"
+              alt="Landschaft auf der Wanderung zu den Ink Pots"
+              loading="lazy"
+            >
+
+            <img
+              class="local-image zoomable"
+              src="image-09.avif"
+              alt="Blaugrünes Wasser bei den Ink Pots"
+              loading="lazy"
+            >
+
+            <img
+              class="local-image zoomable"
+              src="image-10.avif"
+              alt="Berglandschaft bei den Ink Pots"
+              loading="lazy"
+            >
+
+            <img
+              class="local-image zoomable"
+              src="image-11.avif"
+              alt="Ink Pots mit Bergen im Hintergrund"
+              loading="lazy"
+            >
+          </div>
+        </article>
+
+        <article class="stop">
+          <div class="stop-head">
+            <h3>Cochrane</h3>
+            <span class="date">Yamnuska Wolfdog Sanctuary</span>
+          </div>
+
+          <p>
+            In Cochrane besuchten wir das Yamnuska Wolfdog Sanctuary. Die
+            Anlage ist sehr schön gestaltet. Die Wolfshunde haben viel Platz
+            und werden dort nach unserem Eindruck artgerecht gehalten.
+          </p>
+
+          <p>
+            Die Tiere dürfen nicht angefasst werden. Es gibt jedoch Vorträge
+            innerhalb der Gehege. Dabei erfährt man viel über die Wolfshunde
+            und darf ihnen unter Anleitung Leckerlis geben.
+          </p>
+
+          <div class="links">
+            <a
+              class="button external-link"
+              href="https://www.yamnuskawolfdogsanctuary.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Yamnuska Wolfdog Sanctuary
+            </a>
+          </div>
+
+          <div class="stop-gallery">
+            <img
+              class="local-image zoomable"
+              src="image-12.avif"
+              alt="Wolfshund im Yamnuska Wolfdog Sanctuary"
+              loading="lazy"
+            >
+
+            <img
+              class="local-image zoomable"
+              src="image-13.avif"
+              alt="Anlage des Yamnuska Wolfdog Sanctuary"
+              loading="lazy"
+            >
+          </div>
+        </article>
+
+        <article class="stop">
+          <div class="stop-head">
+            <h3>Lake Louise</h3>
+            <span class="date">14. Oktober 2022</span>
+          </div>
+
+          <p>
+            Eine anspruchsvolle Wanderung in der eindrucksvollen Bergwelt
+            rund um Lake Louise.
+          </p>
+
+          <ul class="facts">
+            <li>12 km</li>
+            <li>Aufstieg 585 m</li>
+            <li>Abstieg 590 m</li>
+            <li>Max. Höhe 2.285 m</li>
+          </ul>
+
+          <div class="stop-gallery">
+            <img
+              class="local-image zoomable"
+              src="image-14.avif"
+              alt="Berglandschaft bei Lake Louise"
+              loading="lazy"
+            >
+
+            <img
+              class="local-image zoomable"
+              src="image-15.avif"
+              alt="Wanderung rund um Lake Louise"
+              loading="lazy"
+            >
+          </div>
+        </article>
+
+        <article class="stop">
+          <div class="stop-head">
+            <h3>Jasper</h3>
+            <span class="date">Dark Sky Festival</span>
+          </div>
+
+          <p>
+            In Jasper standen ein Stadtbesuch, das Dark Sky Festival und
+            Entspannung in der Sauna des Fairmont auf dem Programm.
+          </p>
+
+          <p>
+            In Jasper begegneten uns außerdem immer wieder Wapitis. Zu den
+            Tieren soll man mindestens 30 Meter Abstand halten. Trotzdem
+            machte ich ein Selfie mit einem kleinen Wapiti im Hintergrund.
+            Die ausgewachsenen Wapitis sehen aus der Nähe schon ein bisschen
+            angsteinflößend aus.
+          </p>
+
+          <div class="stop-gallery four">
+            <img
+              class="local-image zoomable"
+              src="image-16.avif"
+              alt="Eindrücke aus Jasper"
+              loading="lazy"
+            >
+
+            <img
+              class="local-image zoomable"
+              src="image-17.avif"
+              alt="Landschaft bei Jasper"
+              loading="lazy"
+            >
+
+            <img
+              class="local-image zoomable"
+              src="image-18.avif"
+              alt="Eindrücke aus Jasper und der Umgebung"
+              loading="lazy"
+            >
+
+            <img
+              class="local-image zoomable"
+              src="image-19.avif"
+              alt="Wapiti bei Jasper"
+              loading="lazy"
+            >
+          </div>
+        </article>
+
+        <article class="stop">
+          <div class="stop-head">
+            <h3>Edith Lake &amp; Maligne Canyon</h3>
+            <span class="date">16. Oktober 2022</span>
+          </div>
+
+          <p>
+            Eine lange Wanderung durch die Landschaft rund um Jasper,
+            Edith Lake und den Maligne Canyon.
+          </p>
+
+          <ul class="facts">
+            <li>18 km</li>
+            <li>Aufstieg 240 m</li>
+            <li>Abstieg 250 m</li>
+            <li>Max. Höhe 1.185 m</li>
+          </ul>
+
+          <div class="links">
+            <a class="button folder-button gpx-download" href="Jasper_2022-10-16_10-58-43.GPX" download="Jasper_2022-10-16_10-58-43.GPX" aria-label="Jasper_2022-10-16_10-58-43.GPX herunterladen">Jasper_2022-10-16_10-58-43.GPX herunterladen</a>
+          </div>
+
+          <div class="stop-gallery four">
+            <img
+              class="local-image zoomable"
+              src="image-20.avif"
+              alt="Landschaft bei Jasper"
+              loading="lazy"
+            >
+
+            <img
+              class="local-image zoomable"
+              src="image-21.avif"
+              alt="Wanderlandschaft bei Jasper"
+              loading="lazy"
+            >
+
+            <img
+              class="local-image zoomable"
+              src="image-22.avif"
+              alt="Fluss und Berglandschaft bei Jasper"
+              loading="lazy"
+            >
+
+            <img
+              class="local-image zoomable route-image"
+              src="image-23.avif"
+              alt="Streckenkarte der Wanderung bei Jasper"
+              loading="lazy"
+            >
+          </div>
+        </article>
+
+        <article class="stop">
+          <div class="stop-head">
+            <h3>Clearwater &amp; Dutch Lake</h3>
+            <span class="date">18. Oktober 2022</span>
+          </div>
+
+          <p>
+            Eine kürzere Wanderung am Dutch Lake und anschließend ein
+            praktischer Laundry-Day auf dem Campingplatz.
+          </p>
+
+          <ul class="facts">
+            <li>5 km</li>
+            <li>Aufstieg 100 m</li>
+            <li>Abstieg 100 m</li>
+            <li>Max. Höhe 470 m</li>
+          </ul>
+
+          <div class="stop-gallery three">
+            <img
+              class="local-image zoomable"
+              src="image-24.avif"
+              alt="Landschaft am Dutch Lake bei Clearwater"
+              loading="lazy"
+            >
+
+            <img
+              class="local-image zoomable"
+              src="image-25.avif"
+              alt="Dutch Lake bei Clearwater"
+              loading="lazy"
+            >
+
+            <img
+              class="local-image zoomable"
+              src="image-26.avif"
+              alt="Landschaft bei Clearwater"
+              loading="lazy"
+            >
+          </div>
+        </article>
+
+        <article class="stop trip-highlight" id="trophy-meadows">
+          <div class="stop-head">
+            <h3>Trophy Meadows Trail</h3>
+            <span class="date">19. Oktober 2022</span>
+          </div>
+
+          <span class="verdict highlight-label">
+            ★ Unser größtes Reisehighlight
+          </span>
+
+          <p>
+            Die für uns schönste Wanderung der gesamten Reise. Wir trafen
+            keine anderen Menschen, hörten keine störenden Geräusche und
+            waren mitten in einer nahezu vollkommen stillen Berglandschaft.
+          </p>
+
+          <p>
+            Der wunderschöne Ausblick am Ende machte den Trophy Meadows Trail
+            zu einem Erlebnis, das uns besonders in Erinnerung geblieben ist.
+            Wer Einsamkeit, Ruhe und Natur sucht, sollte sich diese Wanderung
+            genauer ansehen.
+          </p>
+
+          <ul class="facts">
+            <li>10 km</li>
+            <li>Aufstieg 375 m</li>
+            <li>Abstieg 385 m</li>
+            <li>Max. Höhe 2.135 m</li>
+          </ul>
+
+          <div class="highlight">
+            <strong>Warum es so besonders war:</strong>
+            absolute Stille, keine anderen Menschen und eine fantastische
+            Aussicht zum Abschluss der Wanderung.
+          </div>
+
+          <div class="links">
+            <a class="button folder-button gpx-download" href="Trophy Meadows Trail 2022-10-19_12-17-38.GPX" download="Trophy Meadows Trail 2022-10-19_12-17-38.GPX" aria-label="Trophy Meadows Trail 2022-10-19_12-17-38.GPX herunterladen">Trophy Meadows Trail 2022-10-19_12-17-38.GPX herunterladen</a>
+
+            <a
+              class="button external-link"
+              href="https://www.komoot.com/de-de/smarttour/1241389?ref=wdd&amp;t_s=referral&amp;t_cid=route_share&amp;t_ref_username=1447158943045"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Tour bei Komoot
+            </a>
+          </div>
+
+          <div class="stop-gallery three">
+            <img
+              class="local-image zoomable"
+              src="image-27.avif"
+              alt="Trophy Meadows Trail"
+              loading="lazy"
+            >
+
+            <img
+              class="local-image zoomable"
+              src="image-28.avif"
+              alt="Aussicht am Trophy Meadows Trail"
+              loading="lazy"
+            >
+
+            <img
+              class="local-image zoomable route-image"
+              src="image-29.avif"
+              alt="Streckenkarte des Trophy Meadows Trail"
+              loading="lazy"
+            >
+          </div>
+        </article>
+
+        <article class="stop">
+          <div class="stop-head">
+            <h3>Kamloops &amp; Salmon Arm</h3>
+            <span class="date">British Columbia</span>
+          </div>
+
+          <p>
+            Weiterfahrt über Kamloops nach Salmon Arm. Dort beobachteten wir
+            die Lachswanderung. Auch die Fahrt durch British Columbia und
+            später weiter in Richtung Whistler bot viele schöne Ausblicke.
+          </p>
+
+          <div class="stop-gallery three">
+            <img
+              class="local-image zoomable"
+              src="image-30.avif"
+              alt="Landschaft bei Kamloops und Salmon Arm"
+              loading="lazy"
+            >
+
+            <img
+              class="local-image zoomable"
+              src="image-31.avif"
+              alt="Fahrt zwischen Kamloops und Whistler"
+              loading="lazy"
+            >
+
+            <img
+              class="local-image zoomable"
+              src="image-32.avif"
+              alt="Eindrücke aus Salmon Arm"
+              loading="lazy"
+            >
+          </div>
+        </article>
+
+        <div class="region-heading">
+          <h3>Rund um Whistler</h3>
+
+          <p>
+            Old Bintys, der Singing Pass Trail und Blackcomb lagen alle in
+            der Region rund um Whistler. Ab diesem Teil der Reise begann es
+            bei uns zu schneien.
+          </p>
+        </div>
+
+        <article class="stop">
+          <div class="stop-head">
+            <h3>Old Bintys</h3>
+            <span class="date">22. Oktober 2022 · Whistler</span>
+          </div>
+
+          <ul class="facts">
+            <li>8 km</li>
+            <li>Aufstieg 315 m</li>
+            <li>Abstieg 400 m</li>
+            <li>Max. Höhe 1.122 m</li>
+          </ul>
+
+          <div class="stop-gallery three">
+            <img
+              class="local-image zoomable"
+              src="image-33.avif"
+              alt="Wanderung bei Old Bintys"
+              loading="lazy"
+            >
+
+            <img
+              class="local-image zoomable"
+              src="image-34.avif"
+              alt="Landschaft bei Old Bintys"
+              loading="lazy"
+            >
+
+            <img
+              class="local-image zoomable"
+              src="image-35.avif"
+              alt="Unterwegs bei Old Bintys nahe Whistler"
+              loading="lazy"
+            >
+          </div>
+        </article>
+
+        <article class="stop">
+          <div class="stop-head">
+            <h3>Singing Pass Trail</h3>
+            <span class="date">24. Oktober 2022 · Whistler</span>
+          </div>
+
+          <p>
+            Eine weitere Wanderung in der Umgebung von Whistler. Zu diesem
+            Zeitpunkt setzte auf unserer Reise zunehmend winterliches Wetter
+            ein und es begann zu schneien.
+          </p>
+
+          <ul class="facts">
+            <li>11 km</li>
+            <li>Aufstieg 490 m</li>
+            <li>Abstieg 505 m</li>
+            <li>Max. Höhe 1.177 m</li>
+          </ul>
+
+          <div class="stop-gallery">
+            <img
+              class="local-image zoomable"
+              src="image-36.avif"
+              alt="Winterliche Landschaft auf dem Singing Pass Trail"
+              loading="lazy"
+            >
+
+            <img
+              class="local-image zoomable"
+              src="image-37.avif"
+              alt="Schnee auf dem Singing Pass Trail bei Whistler"
+              loading="lazy"
+            >
+          </div>
+        </article>
+
+        <article class="stop">
+          <div class="stop-head">
+            <h3>Blackcomb</h3>
+            <span class="date">Whistler</span>
+          </div>
+
+          <p>
+            Die Wanderung bei Blackcomb war für uns im Vergleich zu den
+            anderen Touren eher langweilig. Interessant war dagegen der
+            olympische Hintergrund von Whistler: Wir schauten uns dort auch
+            die Bobbahn der Olympischen Winterspiele an.
+          </p>
+
+          <ul class="facts">
+            <li>14 km</li>
+            <li>Aufstieg 650 m</li>
+            <li>Abstieg 630 m</li>
+            <li>Max. Höhe 1.348 m</li>
+          </ul>
+
+          <div class="stop-gallery">
+            <img
+              class="local-image zoomable panorama"
+              src="image-38.avif"
+              alt="Landschaft bei Blackcomb"
+              loading="lazy"
+            >
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="camping">
+      <h2>Campingplätze entlang der Route</h2>
+
+      <p class="section-intro">
+        Die Übernachtungsplätze sind in der Reihenfolge unserer Reise
+        angeordnet. Unser klarer Favorit war der Alice Lake Campground.
+      </p>
+
+      <div class="camp-route">
+        <article class="camp-card">
+          <div class="camp-number">1</div>
+
+          <div class="camp-content">
+            <span class="camp-place">Canmore</span>
+            <h3>Wapiti Campground</h3>
+
+            <p>Praktisch gelegen, für unseren Geschmack aber zu laut.</p>
+
+            <span class="camp-rating">Für uns zu laut</span>
+          </div>
+        </article>
+
+        <article class="camp-card">
+          <div class="camp-number">2</div>
+
+          <div class="camp-content">
+            <span class="camp-place">Banff</span>
+            <h3>Tunnel Mountain Village II</h3>
+
+            <p>Campingplatz im Banff National Park.</p>
+
+            <div class="camp-gallery">
+              <img
+                class="local-image zoomable"
+                src="image-39.avif"
+                alt="Tunnel Mountain Village II Campground in Banff"
+                loading="lazy"
+              >
+            </div>
+          </div>
+        </article>
+
+        <article class="camp-card">
+          <div class="camp-number">3</div>
+
+          <div class="camp-content">
+            <span class="camp-place">Cochrane</span>
+            <h3>Bow RiversEdge Campground</h3>
+
+            <p>Unser Campingplatz während des Aufenthalts in Cochrane.</p>
+          </div>
+        </article>
+
+        <article class="camp-card">
+          <div class="camp-number">4</div>
+
+          <div class="camp-content">
+            <span class="camp-place">Jasper</span>
+            <h3>Wapiti Campground</h3>
+
+            <p>Unser Campingplatz im Jasper National Park.</p>
+          </div>
+        </article>
+
+        <article class="camp-card">
+          <div class="camp-number">5</div>
+
+          <div class="camp-content">
+            <span class="camp-place">Clearwater</span>
+            <h3>Dutch Lake Resort &amp; RV Park</h3>
+
+            <p>Mit Waschmaschine – perfekt für unseren Laundry-Day.</p>
+          </div>
+        </article>
+
+        <article class="camp-card">
+          <div class="camp-number">6</div>
+
+          <div class="camp-content">
+            <span class="camp-place">Kamloops</span>
+            <h3>Knutsford Campground</h3>
+
+            <p>Campingplatz während unseres Aufenthalts bei Kamloops.</p>
+          </div>
+        </article>
+
+        <article class="camp-card">
+          <div class="camp-number">7</div>
+
+          <div class="camp-content">
+            <span class="camp-place">Salmon Arm</span>
+            <h3>Viewpoint RV Park &amp; Cottages</h3>
+
+            <p>Unser Übernachtungsplatz bei Salmon Arm.</p>
+
+            <span class="camp-rating">Für uns zu laut</span>
+          </div>
+        </article>
+
+        <article class="camp-card favorite">
+          <div class="camp-number">8</div>
+
+          <div class="camp-content">
+            <span class="favorite-badge">
+              ★ Unser Camping-Favorit
+            </span>
+
+            <br>
+
+            <span class="camp-place">Alice Lake</span>
+
+            <h3>Alice Lake Campground</h3>
+
+            <p>
+              Der für uns schönste Campingplatz der gesamten Reise. Unser
+              Stellplatz lag mitten zwischen hohen Bäumen und vermittelte
+              genau das Waldgefühl, das wir uns von Kanada erhofft hatten.
+            </p>
+
+            <div class="camp-gallery">
+              <img
+                class="local-image zoomable"
+                src="image-40.avif"
+                alt="Wohnmobil auf dem Alice Lake Campground"
+                loading="lazy"
+              >
+
+              <img
+                class="local-image zoomable"
+                src="image-41.avif"
+                alt="Stellplatz zwischen hohen Bäumen auf dem Alice Lake Campground"
+                loading="lazy"
+              >
+            </div>
+          </div>
+        </article>
+
+        <article class="camp-card">
+          <div class="camp-number">9</div>
+
+          <div class="camp-content">
+            <span class="camp-place">Vancouver</span>
+            <h3>Peace Arch RV Park</h3>
+
+            <p>Campingplatz für unseren Aufenthalt bei Vancouver.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="tipps">
+      <h2>Weitere Tipps</h2>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-content">
+            <span class="badge">Navigation</span>
+            <h3>AllTrails</h3>
+
+            <p>
+              Die App AllTrails hat für unsere Wanderungen in Kanada am
+              besten funktioniert.
+            </p>
+
+            <div class="links">
+              <a
+                class="button external-link"
+                href="https://www.alltrails.com/de"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                AllTrails öffnen
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img
+            class="local-image zoomable"
+            src="image-42.avif"
+            alt="Hinweis zur Kaffeekultur von Tim Hortons"
+            loading="lazy"
+          >
+
+          <div class="card-content">
+            <span class="badge">Kaffee</span>
+            <h3>Tim Hortons</h3>
+
+            <p>
+              Tim Hortons gehört für uns zu einem Kanada-Roadtrip einfach
+              dazu und ist vermutlich echter kanadischer Kult.
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img
+            class="local-image zoomable"
+            src="image-43.avif"
+            alt="Earth's Own Mandelmilch mit Vanille"
+            loading="lazy"
+          >
+
+          <div class="card-content">
+            <span class="badge">Entdeckung</span>
+            <h3>Earth’s Own</h3>
+
+            <p>
+              Die Milchalternativen von Earth’s Own sind sehr lecker.
+              Besonders gut fanden wir die ungesüßte Mandelversion mit
+              Vanille.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>Kanada 2022</strong><br>
+    Erinnerungen und persönliche Empfehlungen von unserem Roadtrip durch
+    die kanadischen Rockies.
+  </footer>
+
+  <div
+    class="lightbox"
+    id="lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Vergrößerte Bildansicht"
+  >
+    <button
+      type="button"
+      id="closeLightbox"
+      aria-label="Bildansicht schließen"
+    >
+      ×
+    </button>
+
+    <img id="lightboxImage" src="" alt="">
+  </div>
+
+  <script>
+    document.querySelectorAll(".local-image").forEach((image) => {
+      image.addEventListener("error", function handleImageError() {
+        const currentSource = image.getAttribute("src");
+
+        if (
+          currentSource &&
+          currentSource.startsWith("Kanada2022/") &&
+          image.dataset.fallbackUsed !== "true"
+        ) {
+          image.dataset.fallbackUsed = "true";
+          image.src = currentSource.replace("Kanada2022/", "");
+          return;
+        }
+
+        image.classList.add("image-error");
+        image.alt = "Bild konnte nicht geladen werden: " + currentSource;
+      });
+    });
+
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const closeLightboxButton = document.getElementById("closeLightbox");
+    const zoomableImages = document.querySelectorAll(".zoomable");
+
+    let lastFocusedElement = null;
+
+    function openLightbox(image) {
+      lastFocusedElement = document.activeElement;
+      lightboxImage.src = image.getAttribute("src") || image.currentSrc || image.src;
+      lightboxImage.alt = image.alt;
+      lightbox.classList.add("open");
+      document.body.style.overflow = "hidden";
+      closeLightboxButton.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      lightboxImage.src = "";
+      lightboxImage.alt = "";
+      document.body.style.overflow = "";
+
+      if (lastFocusedElement) {
+        lastFocusedElement.focus();
+      }
+    }
+
+    zoomableImages.forEach((image) => {
+      image.setAttribute("tabindex", "0");
+      image.setAttribute("role", "button");
+      image.setAttribute(
+        "aria-label",
+        image.alt + " – zur Vergrößerung auswählen"
+      );
+
+      let touchStartX = 0;
+      let touchStartY = 0;
+      let touchStartTime = 0;
+      let lastTouchOpen = 0;
+
+      image.addEventListener("touchstart", (event) => {
+        const touch = event.changedTouches[0];
+        touchStartX = touch.clientX;
+        touchStartY = touch.clientY;
+        touchStartTime = Date.now();
+      }, { passive: true });
+
+      image.addEventListener("touchend", (event) => {
+        const touch = event.changedTouches[0];
+        const moved = Math.hypot(
+          touch.clientX - touchStartX,
+          touch.clientY - touchStartY
+        );
+        const duration = Date.now() - touchStartTime;
+
+        if (
+          moved < 12 &&
+          duration < 700 &&
+          !image.classList.contains("image-error")
+        ) {
+          event.preventDefault();
+          lastTouchOpen = Date.now();
+          openLightbox(image);
+        }
+      }, { passive: false });
+
+      image.addEventListener("click", () => {
+        if (
+          Date.now() - lastTouchOpen > 800 &&
+          !image.classList.contains("image-error")
+        ) {
+          openLightbox(image);
+        }
+      });
+
+      image.addEventListener("keydown", (event) => {
+        if (
+          (event.key === "Enter" || event.key === " ") &&
+          !image.classList.contains("image-error")
+        ) {
+          event.preventDefault();
+          openLightbox(image);
+        }
+      });
+    });
+
+    closeLightboxButton.addEventListener("click", closeLightbox);
+
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (
+        event.key === "Escape" &&
+        lightbox.classList.contains("open")
+      ) {
+        closeLightbox();
+      }
+    });
+  </script>
+</body>
+</html>
