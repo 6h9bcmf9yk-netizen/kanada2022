@@ -159,6 +159,7 @@
       width: min(1180px, calc(100% - 2rem));
       margin: 0 auto;
       padding: 9rem 0 5.5rem;
+      text-align: center;
     }
 
     .hero-meta {
@@ -175,6 +176,10 @@
       flex-wrap: wrap;
       gap: 0.7rem;
       margin-top: 1.2rem;
+    }
+
+    .hero-actions {
+      justify-content: center;
     }
 
     /* Schaltflächen und Links */
@@ -308,6 +313,10 @@
       margin: 0 auto;
       padding: 5.5rem 0;
       scroll-margin-top: 4rem;
+    }
+
+    #reise {
+      padding-top: 2rem;
     }
 
     #reise {
@@ -868,6 +877,41 @@
       background: var(--wald);
     }
 
+    .back-to-top {
+      position: fixed;
+      right: max(1rem, env(safe-area-inset-right));
+      bottom: max(1rem, env(safe-area-inset-bottom));
+      z-index: 60;
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      color: var(--weiss);
+      background: var(--wald);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      font-size: 1.45rem;
+      line-height: 1;
+      text-decoration: none;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity 160ms ease, transform 160ms ease;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover,
+    .back-to-top:focus-visible {
+      color: var(--wald-dunkel);
+      background: var(--gold);
+    }
+
     @media (max-width: 900px) {
       .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1011,7 +1055,7 @@
 <body>
   <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
 
-  <header class="hero">
+  <header class="hero" id="top">
     <img
       class="hero-image local-image"
       src="image-01.avif" decoding="async"
@@ -1043,19 +1087,6 @@
 
   <main id="inhalt">
     <section class="section" id="reise">
-      <h2>Reiseverlauf</h2>
-
-      <nav class="stage-nav" aria-label="Direkt zu einer Reiseetappe">
-        <a href="#canmore">Canmore</a>
-        <a href="#banff">Banff</a>
-        <a href="#ink-pots">Ink Pots</a>
-        <a href="#lake-louise">Lake Louise</a>
-        <a href="#jasper">Jasper</a>
-        <a href="#clearwater">Clearwater</a>
-        <a href="#trophy-meadows">Trophy Meadows</a>
-        <a href="#whistler">Whistler</a>
-      </nav>
-
       <p class="photo-tip"><span aria-hidden="true">🔍</span> Tipp: Fotos antippen oder anklicken, um sie groß anzuzeigen.</p>
 
       <div class="timeline">
@@ -1970,6 +2001,8 @@
     die kanadischen Rockies.
   </footer>
 
+  <a class="back-to-top" href="#top" aria-label="Zurück nach oben" title="Nach oben">↑</a>
+
   <div
     class="lightbox"
     id="lightbox"
@@ -2012,6 +2045,14 @@
     const lightboxImage = document.getElementById("lightboxImage");
     const closeLightboxButton = document.getElementById("closeLightbox");
     const zoomableImages = document.querySelectorAll(".zoomable");
+    const backToTop = document.querySelector(".back-to-top");
+
+    function updateBackToTop() {
+      backToTop.classList.toggle("visible", window.scrollY > 500);
+    }
+
+    window.addEventListener("scroll", updateBackToTop, { passive: true });
+    updateBackToTop();
 
     let lastFocusedElement = null;
 
