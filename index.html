@@ -262,16 +262,16 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      overflow-x: auto;
       background: rgba(23, 63, 53, 0.97);
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
       backdrop-filter: blur(12px);
     }
 
     .navigation-inner {
-      width: max-content;
-      min-width: 100%;
+      width: min(1180px, 100%);
+      margin: 0 auto;
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       gap: 0.2rem;
       padding: 0.55rem 1rem;
@@ -375,21 +375,37 @@
     }
 
     .facts {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.65rem;
       margin: 1rem 0;
       padding: 0;
       list-style: none;
     }
 
     .facts li {
-      padding: 0.38rem 0.7rem;
-      border-radius: 999px;
+      display: grid;
+      gap: 0.12rem;
+      min-width: 0;
+      padding: 0.7rem 0.75rem;
+      border: 1px solid rgba(19, 141, 163, 0.16);
+      border-radius: 12px;
       color: var(--wald);
       background: var(--wasser-hell);
-      font-size: 0.85rem;
-      font-weight: 720;
+      text-align: center;
+    }
+
+    .facts span {
+      color: var(--grau);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .facts strong {
+      font-size: 0.96rem;
+      line-height: 1.2;
     }
 
     .highlight {
@@ -485,11 +501,10 @@
 
     .stage-nav {
       display: flex;
+      flex-wrap: wrap;
       gap: 0.55rem;
       margin: 0.8rem 0 1rem;
       padding: 0.35rem 0 0.65rem;
-      overflow-x: auto;
-      scrollbar-width: thin;
     }
 
     .stage-nav a {
@@ -869,6 +884,34 @@
         padding: 4rem 0;
       }
 
+      .navigation-inner {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.25rem;
+        padding: 0.45rem 0.6rem;
+      }
+
+      .navigation a {
+        padding: 0.5rem 0.35rem;
+        font-size: 0.8rem;
+        text-align: center;
+        white-space: normal;
+      }
+
+      .stage-nav {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .stage-nav a {
+        padding: 0.58rem 0.4rem;
+        text-align: center;
+      }
+
+      .facts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       #reise {
         padding-bottom: 1.5rem;
       }
@@ -1052,10 +1095,10 @@
           </p>
 
           <ul class="facts">
-            <li>9 km</li>
-            <li>Aufstieg 130 m</li>
-            <li>Abstieg 105 m</li>
-            <li>Max. Höhe 1.341 m</li>
+            <li><span>Strecke</span><strong>9 km</strong></li>
+            <li><span>Aufstieg</span><strong>130 m</strong></li>
+            <li><span>Abstieg</span><strong>105 m</strong></li>
+            <li><span>Max. Höhe</span><strong>1.341 m</strong></li>
           </ul>
 
           <div class="links">
@@ -1105,10 +1148,10 @@
           </p>
 
           <ul class="facts">
-            <li>10,5 km</li>
-            <li>Aufstieg 680 m</li>
-            <li>Abstieg 655 m</li>
-            <li>Max. Höhe 2.275 m</li>
+            <li><span>Strecke</span><strong>10,5 km</strong></li>
+            <li><span>Aufstieg</span><strong>680 m</strong></li>
+            <li><span>Abstieg</span><strong>655 m</strong></li>
+            <li><span>Max. Höhe</span><strong>2.275 m</strong></li>
           </ul>
 
           <div class="stop-gallery three">
@@ -1167,10 +1210,10 @@
           </p>
 
           <ul class="facts">
-            <li>15 km</li>
-            <li>Aufstieg 500 m</li>
-            <li>Abstieg 390 m</li>
-            <li>Max. Höhe 1.768 m</li>
+            <li><span>Strecke</span><strong>15 km</strong></li>
+            <li><span>Aufstieg</span><strong>500 m</strong></li>
+            <li><span>Abstieg</span><strong>390 m</strong></li>
+            <li><span>Max. Höhe</span><strong>1.768 m</strong></li>
           </ul>
 
           <div class="links">
@@ -1188,30 +1231,30 @@
             <h4>Schutz der Ink Pots</h4>
 
             <p>
-              The Inkpots have seen a lot of abuse. In 1996, Parks Canada
-              set out to restore this fragile area. Please help us protect
-              the site by staying on the trails and bridges provided.
+              Die Ink Pots wurden in der Vergangenheit stark beansprucht.
+              Seit 1996 arbeitet Parks Canada daran, dieses empfindliche
+              Gebiet wiederherzustellen. Bitte bleibt zum Schutz der Natur
+              auf den angelegten Wegen und Brücken.
             </p>
 
             <p>
-              Spring water percolates up through the sand and river gravel
-              here to form five blue-green pools known as the “Inkpots”.
-              Look for swirling circles in the sandy pool bottoms – these
-              mark the outlets of water and air bubbles as they move upward
-              from the underground springs.
+              Quellwasser steigt hier durch Sand und Flusskies auf und bildet
+              fünf blaugrüne Becken, die als „Ink Pots“ bekannt sind. Kleine
+              Wirbel im sandigen Grund zeigen, wo Wasser und Luftblasen aus
+              den unterirdischen Quellen nach oben treten.
             </p>
 
             <p>
-              Why do the “Inkpots” differ in colour? They fill at different
-              speeds. The milky-green pools fill more slowly and thus have
-              a heavier suspension of fine materials than the clear,
-              deep-blue pools.
+              Die unterschiedlichen Farben entstehen durch die jeweilige
+              Fließgeschwindigkeit. Die milchig-grünen Becken füllen sich
+              langsamer und enthalten dadurch mehr feine Schwebstoffe als
+              die klaren, tiefblauen Becken.
             </p>
 
             <p>
-              The Inkpots are cool springs. The shallow depth of the
-              underground spring keeps the water temperature around 4 °C
-              much of the year.
+              Die Ink Pots sind kalte Quellen. Weil das Quellwasser nur aus
+              geringer Tiefe kommt, liegt seine Temperatur während eines
+              großen Teils des Jahres bei ungefähr 4 °C.
             </p>
           </aside>
 
@@ -1304,10 +1347,10 @@
           </p>
 
           <ul class="facts">
-            <li>12 km</li>
-            <li>Aufstieg 585 m</li>
-            <li>Abstieg 590 m</li>
-            <li>Max. Höhe 2.285 m</li>
+            <li><span>Strecke</span><strong>12 km</strong></li>
+            <li><span>Aufstieg</span><strong>585 m</strong></li>
+            <li><span>Abstieg</span><strong>590 m</strong></li>
+            <li><span>Max. Höhe</span><strong>2.285 m</strong></li>
           </ul>
 
           <div class="stop-gallery">
@@ -1389,10 +1432,10 @@
           </p>
 
           <ul class="facts">
-            <li>18 km</li>
-            <li>Aufstieg 240 m</li>
-            <li>Abstieg 250 m</li>
-            <li>Max. Höhe 1.185 m</li>
+            <li><span>Strecke</span><strong>18 km</strong></li>
+            <li><span>Aufstieg</span><strong>240 m</strong></li>
+            <li><span>Abstieg</span><strong>250 m</strong></li>
+            <li><span>Max. Höhe</span><strong>1.185 m</strong></li>
           </ul>
 
           <div class="links">
@@ -1442,10 +1485,10 @@
           </p>
 
           <ul class="facts">
-            <li>5 km</li>
-            <li>Aufstieg 100 m</li>
-            <li>Abstieg 100 m</li>
-            <li>Max. Höhe 470 m</li>
+            <li><span>Strecke</span><strong>5 km</strong></li>
+            <li><span>Aufstieg</span><strong>100 m</strong></li>
+            <li><span>Abstieg</span><strong>100 m</strong></li>
+            <li><span>Max. Höhe</span><strong>470 m</strong></li>
           </ul>
 
           <div class="stop-gallery three">
@@ -1496,10 +1539,10 @@
           </p>
 
           <ul class="facts">
-            <li>10 km</li>
-            <li>Aufstieg 375 m</li>
-            <li>Abstieg 385 m</li>
-            <li>Max. Höhe 2.135 m</li>
+            <li><span>Strecke</span><strong>10 km</strong></li>
+            <li><span>Aufstieg</span><strong>375 m</strong></li>
+            <li><span>Abstieg</span><strong>385 m</strong></li>
+            <li><span>Max. Höhe</span><strong>2.135 m</strong></li>
           </ul>
 
           <div class="highlight">
@@ -1598,10 +1641,10 @@
           </div>
 
           <ul class="facts">
-            <li>8 km</li>
-            <li>Aufstieg 315 m</li>
-            <li>Abstieg 400 m</li>
-            <li>Max. Höhe 1.122 m</li>
+            <li><span>Strecke</span><strong>8 km</strong></li>
+            <li><span>Aufstieg</span><strong>315 m</strong></li>
+            <li><span>Abstieg</span><strong>400 m</strong></li>
+            <li><span>Max. Höhe</span><strong>1.122 m</strong></li>
           </ul>
 
           <div class="stop-gallery three">
@@ -1641,10 +1684,10 @@
           </p>
 
           <ul class="facts">
-            <li>11 km</li>
-            <li>Aufstieg 490 m</li>
-            <li>Abstieg 505 m</li>
-            <li>Max. Höhe 1.177 m</li>
+            <li><span>Strecke</span><strong>11 km</strong></li>
+            <li><span>Aufstieg</span><strong>490 m</strong></li>
+            <li><span>Abstieg</span><strong>505 m</strong></li>
+            <li><span>Max. Höhe</span><strong>1.177 m</strong></li>
           </ul>
 
           <div class="stop-gallery">
@@ -1678,10 +1721,10 @@
           </p>
 
           <ul class="facts">
-            <li>14 km</li>
-            <li>Aufstieg 650 m</li>
-            <li>Abstieg 630 m</li>
-            <li>Max. Höhe 1.348 m</li>
+            <li><span>Strecke</span><strong>14 km</strong></li>
+            <li><span>Aufstieg</span><strong>650 m</strong></li>
+            <li><span>Abstieg</span><strong>630 m</strong></li>
+            <li><span>Max. Höhe</span><strong>1.348 m</strong></li>
           </ul>
 
           <div class="stop-gallery">
